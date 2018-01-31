@@ -83,20 +83,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-  //fetchData(fileText) {
-    // let xml1Url = "https://catherinearnould.com/autres/dist/assets/degroof_translations/Qualifying.en-GB.resx"
-    //     xml2Url = "https://catherinearnould.com/autres/dist/assets/degroof_translations/Qualifying.fr-BE.resx"
-    //     xml3Url = "https://catherinearnould.com/autres/dist/assets/degroof_translations/Qualifying.nl-BE.resx";
-    //
-    // let fetchXml1 = this.loadXML.loadXML(xml1Url),
-    //     fetchXml2 = this.loadXML.loadXML(xml2Url),
-    //     fetchXml3 = this.loadXML.loadXML(xml3Url);
-    //
-    // forkJoin([fetchXml1, fetchXml2, fetchXml3]).subscribe(results => {
-    //   this.parseXML(results)
-    // });
-  //}
-
   private parseXML(fileText, num) {
     var parseString = require('xml2js').parseString,
       tArr = this.rForm.controls.translations as FormArray,

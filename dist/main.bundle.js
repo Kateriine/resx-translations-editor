@@ -121,19 +121,6 @@ var AppComponent = /** @class */ (function () {
             this.msgs.push({ severity: 'warning', summary: 'Failure: ', detail: 'Please upload ' + this.maxFiles + ' files maximum' });
         }
     };
-    //fetchData(fileText) {
-    // let xml1Url = "https://catherinearnould.com/autres/dist/assets/degroof_translations/Qualifying.en-GB.resx"
-    //     xml2Url = "https://catherinearnould.com/autres/dist/assets/degroof_translations/Qualifying.fr-BE.resx"
-    //     xml3Url = "https://catherinearnould.com/autres/dist/assets/degroof_translations/Qualifying.nl-BE.resx";
-    //
-    // let fetchXml1 = this.loadXML.loadXML(xml1Url),
-    //     fetchXml2 = this.loadXML.loadXML(xml2Url),
-    //     fetchXml3 = this.loadXML.loadXML(xml3Url);
-    //
-    // forkJoin([fetchXml1, fetchXml2, fetchXml3]).subscribe(results => {
-    //   this.parseXML(results)
-    // });
-    //}
     AppComponent.prototype.parseXML = function (fileText, num) {
         var parseString = __webpack_require__("../../../../xml2js/lib/xml2js.js").parseString, tArr = this.rForm.controls.translations, _app = this;
         var k, arr = [], parser = __webpack_require__("../../../../xml2js/lib/xml2js.js").parseString;
@@ -221,7 +208,6 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.removeTranslation = function (t) {
         var _this = this;
-        console.log(t);
         var dialogRef = this.modal.confirm()
             .showClose(true)
             .title('Do you really want to delete the translation ' + t.value.tName + '?')
