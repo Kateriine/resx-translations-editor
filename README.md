@@ -1,10 +1,19 @@
-# Angularxml
+# resx-translations-editor
 
+Resx files editor made in Angular
+
+This is a small app I made for fun. Feel free to use it or improve it.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+
+[Demo here](https://catherinearnould.com/autres/resx/)
+
+Warning: requires typescript 2.5.2 due to [ngx-modialog issue](https://github.com/shlomiassaf/ngx-modialog/issues/400)
+Can't make it work with ng-serve, only with ng-build (doesn't find a file in /assets, can't figure out why)
+
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
