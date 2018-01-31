@@ -10,7 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Warning:
 * Requires typescript 2.5.2 due to [ngx-modialog issue](https://github.com/shlomiassaf/ngx-modialog/issues/400)
-* Can't make it work with ng-serve, only with ng-build (doesn't find a file in /assets, can't figure out why)
+* Small console error with `ng serve` on file upload due to the [primeng fileUploadModule](https://www.primefaces.org/primeng/#/fileupload), but doesn't impact anything (doesn't find a file in /assets, can't figure out why)
 
 
 ## Development server
