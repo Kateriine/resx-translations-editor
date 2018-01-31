@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Angularxml</title>
+  <title>Resx translations files online editor</title>
   <base href="./">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -286,6 +286,19 @@
     .modal-dialog {
       max-width: 600px;
       margin: 30px auto;
+    }
+  }
+
+  @media all and (-ms-high-contrast:none) {
+    *::-ms-backdrop, .ion, .ion-android-close, .ion-ios-trash {
+      font-family: "Fakt", sans-serif !important;
+      font-weight: bold !important;
+    }
+    *::-ms-backdrop, .ion-android-close:before { content: 'x'; } /* IE11 */
+    *::-ms-backdrop, .ion-ios-trash:before { content: '-'; } /* IE11 */
+    *::-ms-backdrop, .ion-android-add:before { content: '+'; } /* IE11 */
+    *::-ms-backdrop, .ui-fileupload-row > div:last-child {
+      float: right
     }
   }
   </style>

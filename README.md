@@ -8,8 +8,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 [Demo here](https://catherinearnould.com/autres/resx/)
 
-Warning: requires typescript 2.5.2 due to [ngx-modialog issue](https://github.com/shlomiassaf/ngx-modialog/issues/400)
-
+Warning:
+* Requires typescript 2.5.2 due to [ngx-modialog issue](https://github.com/shlomiassaf/ngx-modialog/issues/400)
+* Download doesn't work on IE /Edge
 Can't make it work with ng-serve, only with ng-build (doesn't find a file in /assets, can't figure out why)
 
 
