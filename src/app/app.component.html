@@ -2,11 +2,10 @@
 
   <div class="container">
     <div class="card card-body">
-
       <h1>Resx translations online editor</h1>
 
       <p-fileUpload name="myfile[]" url="./assets/upload.php" multiple="multiple"
-          accept=".resx" auto="true"  (onUpload)="onUpload($event)">
+          accept=".resx" auto="true" [showUploadButton]="false" [showCancelButton]="false" (onSelect)="onSelect($event)">
 
         <ng-template pTemplate="toolbar">
         </ng-template>
@@ -24,7 +23,9 @@
         </ng-template>
         <ng-template pTemplate="content">
           <div class="text-center">
-            Please upload maximum 3 files by clicking on the button or by dragging them into this zone.
+            <p>
+              Please upload maximum 3 files by clicking on the button or by dragging them into this zone.
+            </p>
           </div>
           <div *ngIf="uploadedFiles.length">
             <p-messages [value]="msgs"></p-messages>

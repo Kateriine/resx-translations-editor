@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   private uploadedFiles: any[] = [];
   private msgs: any[];
   private allowed : boolean = true;
-  private maxFiles = 3
+  private maxFiles = 3;
 
   constructor(private loadXML: LoadXmlService, private fb: FormBuilder, public modal: Modal){
 
@@ -36,7 +36,8 @@ export class AppComponent implements OnInit {
     this.tHeads = ['Parameter'];
   }
 
-  private onUpload(event) {
+  private onSelect(event) {
+    //Use onSelect so there are less issues using ng serve; since everything is done client-side, there is no problem :)
     this.msgs = [];
     if( event.files.length > this.maxFiles || this.uploadedFiles.length + event.files.length > this.maxFiles ) {
       this.allowed = false
@@ -224,13 +225,19 @@ export class AppComponent implements OnInit {
   }
 
   private download(filename, text) {
-    var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', filename);
-    element.style.display = 'none';
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
+    if (navigator.msSaveBlob) {
+      var blob = new Blob([text], { type: "text/plain" });
+      window.navigator.msSaveOrOpenBlob(blob, filename);
+    }
+    else {
+      var element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      element.setAttribute('download', filename);
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    }
   }
 
   private addTranslation() {
