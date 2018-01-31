@@ -1,0 +1,12 @@
+<div  class="item" [formGroup]="tItem">
+  <div class="item-name" *ngIf="tHeads[0] && tItem">
+    <input type="text" [readonly]="!tItem.get('isEdit')" class="form-control-bordered rcbInput" id="itemName"  formControlName="tName">
+  </div>
+  <div class="item-value" *ngFor="let file of uploadedFiles; let j = index;">
+    <input type="text" class="form-control-bordered rcbInput" [id]="'itemValue' + j"  formControlName="{{'value' + j }}" *ngIf="tItem && tItem.get('value' + j)">
+  </div>
+  <div class="item-remove">
+    <button (click)="removeItem()" class="btn btn-outline-secondary btn-square"><span class="ion ion-ios-trash"></span></button>
+    <input type="hidden" *ngIf="tItem && tItem.get('comment') && tItem.get('comment').value!= ''" class="form-control-bordered rcbInput" id="itemComment"  formControlName="comment">
+  </div>
+</div>

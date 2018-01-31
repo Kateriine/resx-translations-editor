@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Angularxml</title>
+  <base href="./">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://catherinearnould.com/autres/degroof/assets/css/qualifying.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style media="screen">
+
+  .qualifying {
+    min-height: 100vh;
+    background-image: url(https://catherinearnould.com/autres/degroof/assets/img/background_image_blur.jpg);
+    background-position: bottom left;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .item-name {
+    width: 25%;
+    padding: 10px
+  }
+
+  .item-value {
+    width: auto;
+    padding: 10px;
+    flex: 1 1 auto;
+  }
+  .item {
+    display: flex;
+    border: 1px solid #efefef;
+  }
+
+  .item-remove {
+    text-align: right;
+    width: 60px;
+    padding: 10px
+  }
+
+  .item-add {
+    text-align: right;
+    padding: 10px
+  }
+  .item-container:nth-child(odd) .item {
+    background: #efefef
+  }
+
+  .thead {
+    font-weight: 500;
+  }
+  .ui-messages ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ui-corner-all {
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+  }
+
+  .ui-widget, .ui-widget * {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+  }
+
+  .ui-button, p-button {
+      position: relative;
+      padding: 0;
+      margin-right: .1em;
+      text-decoration: none!important;
+      cursor: pointer;
+      text-align: center;
+      zoom: 1;
+      overflow: visible;
+      display: inline-block;
+      border: 1px solid #00cd76;
+      color: #fff;
+      background-color: #00cd76;
+      -webkit-transition: background-color .2s;
+      -moz-transition: background-color .2s;
+      transition: background-color .2s;
+      font-weight: 300;
+      padding: 0.9rem 2rem;
+      font-size: 1.6rem;
+  }
+
+  .ui-button .ui-button-text {
+      display: block;
+      line-height: normal;
+  }
+  .ui-widget-content {
+    border: 1px solid #efefef;
+    background: #ffffff;
+    color: #000000;
+    margin-bottom: 1rem;
+  }
+  .ui-corner-top {
+    -moz-border-radius-topleft: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .ui-corner-bottom {
+    -moz-border-radius-bottomleft: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  .ui-widget-header {
+    background: #efefef;
+    color: #000000;
+    font-weight: normal;
+  }
+  .ui-fileupload-buttonbar {
+      padding: .5em;
+      border-bottom: 0 none;
+      text-align: center;
+  }
+  .ui-fileupload-buttonbar .ui-button {
+      vertical-align: middle;
+      margin-right: .25em;
+  }
+  .ui-fileupload-content {
+    padding: 4rem;
+    position: relative;
+    -webkit-transition: border-color .3s;
+    transition: border-color .3s;
+  }
+  .ui-fileupload-choose {
+      position: relative;
+      overflow: hidden;
+  }
+  .ui-fileupload-choose input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      opacity: 0;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      direction: ltr;
+      cursor: pointer;
+  }
+  .ui-fileupload-files {
+    display: table;
+  }
+  .ui-fileupload-row {
+    display: flex;
+    border: 1px solid #00cd76;
+    border-radius: 3px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem
+  }
+  .ui-fileupload-row>div {
+    display: table-cell;
+    padding: .5em 1em;
+    vertical-align: middle;
+    border-radius: 3px;
+  }
+  .ui-messages ul {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+    text-align: center;
+  }
+  .ui-messages-info,
+  .ui-messages-success {
+    color: #00cd76;
+    font-weight: 500;
+    font-size: 1.6rem
+  }
+  .ui-messages-danger,
+  .ui-messages-warning {
+    color: red
+  }
+  .ui-button-icon-only {
+    padding: 0;
+  }
+  .ui-button-icon-only .ui-button-text {
+    display: none;
+  }
+
+  .qualifying h1 {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .qualifying .rcbInput[readonly] {
+      border-bottom: none !important;
+  }
+
+  .btn-outline-secondary:focus {
+    box-shadow: none;
+  }
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255,255,255,.6);
+  }
+
+  .modal {
+    width: 100%;
+    heght: 100%;
+  }
+  .modal-backdrop.fade.in,
+  .modal.fade.in {
+    opacity:1
+  }
+
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 1rem;
+    // allow clicks to pass through for custom click handling to close modal
+    pointer-events: none;
+      transition: transform .3s ease-out;
+      transform: translate(0, -25%);
+  }
+
+  .in .modal-dialog { transform: translate(0, 0); }
+
+
+  .modal-content {
+    margin: auto;
+    width: 100%;
+    max-width: 600px;
+    background: inherit;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    overflow: auto;
+  }
+
+  .modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .modal-header .close {
+    float: right
+  }
+
+  .modal-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .modal-footer {
+    border-top: 1px solid #efefef;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .modal .btn-default {
+    color: #000;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #000;
+    margin-right: 2rem
+  }
+
+  .modal .btn-default:hover, .modal .btn-default:focus {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+  }
+
+  @media(min-width: 768px) {
+    .modal-dialog {
+      max-width: 600px;
+      margin: 30px auto;
+    }
+  }
+  </style>
+</head>
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+</html>

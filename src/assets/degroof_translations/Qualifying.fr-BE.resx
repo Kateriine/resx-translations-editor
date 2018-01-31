@@ -1,0 +1,1304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activities_Update Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Insert Q3_Alias" xml:space="preserve">
+    <value>Insert Q3</value>
+  </data>
+  <data name="Activities_WSout_ReturnError_Q8_Alias" xml:space="preserve">
+    <value>WSout_ReturnError_Q8</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Start Next_Alias" xml:space="preserve">
+    <value>Start Next</value>
+  </data>
+  <data name="Activities_StartContainerQ9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer Conf_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q8_Alias" xml:space="preserve">
+    <value>F_Q8</value>
+  </data>
+  <data name="Activities_ErrorHandler_Q2_Alias" xml:space="preserve">
+    <value>ErrorHandler_Q2</value>
+  </data>
+  <data name="Activities_EndEvent1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_End_Q5_Alias" xml:space="preserve">
+    <value>End_Q5</value>
+  </data>
+  <data name="Activities_Loopback_Alias" xml:space="preserve">
+    <value>Empty2</value>
+  </data>
+  <data name="Activities_Start_Q5_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q7_Alias" xml:space="preserve">
+    <value>ReturnNextPage Q7</value>
+  </data>
+  <data name="Activities_F_End_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainerQ3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Conf_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q8 Next_Alias" xml:space="preserve">
+    <value>Q8 Next</value>
+  </data>
+  <data name="Activities_ReturnNextPage Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q3_Alias" xml:space="preserve">
+    <value>WSout_ReturnError_Q3</value>
+  </data>
+  <data name="Activities_StartContainer_Q8_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Start_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Insert Q6_Alias" xml:space="preserve">
+    <value>Insert Q6</value>
+  </data>
+  <data name="Activities_WSout_ReturnError_Q6_Alias" xml:space="preserve">
+    <value>WSout_ReturnError_Q6</value>
+  </data>
+  <data name="Activities_Question8Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q5 Back_Alias" xml:space="preserve">
+    <value>Q5 Back</value>
+  </data>
+  <data name="Activities_ReturnNextPage Q8_Alias" xml:space="preserve">
+    <value>ReturnNextPage Q8</value>
+  </data>
+  <data name="Alias" xml:space="preserve">
+    <value>Qualifying</value>
+  </data>
+  <data name="Activities_Question1Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q5 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q9_Alias" xml:space="preserve">
+    <value>Update Q9</value>
+  </data>
+  <data name="Activities_WSout_ReturnError_Q8 Copy1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q4_Alias" xml:space="preserve">
+    <value>ErrorHandler_Q4</value>
+  </data>
+  <data name="Activities_Insert Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q9_Alias" xml:space="preserve">
+    <value>ReturnPreviousPage_Q9</value>
+  </data>
+  <data name="Activities_EndContainer_Q8_B_Alias" xml:space="preserve">
+    <value>EndContainer_Q8_B</value>
+  </data>
+  <data name="Activities_Insert Q1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Conf_Alias" xml:space="preserve">
+    <value>ErrorHandler_Conf</value>
+  </data>
+  <data name="Activities_EndContainer2_Alias" xml:space="preserve">
+    <value>EndContainer2</value>
+  </data>
+  <data name="Activities_ErrorHandler_Q2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer20_Alias" xml:space="preserve">
+    <value>StartContainer20</value>
+  </data>
+  <data name="Activities_EndContainer_Q9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q8 Back_Alias" xml:space="preserve">
+    <value>Q8 Back</value>
+  </data>
+  <data name="Activities_EndContainer_Q7_Alias" xml:space="preserve">
+    <value>EndContainer_Q7</value>
+  </data>
+  <data name="Activities_DataInput_Alias" xml:space="preserve">
+    <value>DataInput</value>
+  </data>
+  <data name="Activities_ErrorHandler_Q8_Alias" xml:space="preserve">
+    <value>ErrorHandler_Q8</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q3 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question2Next_Alias" xml:space="preserve">
+    <value>Question2Next</value>
+  </data>
+  <data name="Activities_StartContainerQ3_Alias" xml:space="preserve">
+    <value>StartContainerQ3</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q8 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Conf_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage_Q5_Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q4 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer3_Alias" xml:space="preserve">
+    <value>EndContainer3</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q6 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q9 Back_Alias" xml:space="preserve">
+    <value>Q9 Back</value>
+  </data>
+  <data name="Activities_EndContainer_Q8_Alias" xml:space="preserve">
+    <value>EndContainer_Q8</value>
+  </data>
+  <data name="Activities_F_Q3_Alias" xml:space="preserve">
+    <value>F_Q3</value>
+  </data>
+  <data name="Activities_Start_Q5_B_Alias" xml:space="preserve">
+    <value>Start_Q5_B</value>
+  </data>
+  <data name="Activities_NavigationInput_Alias" xml:space="preserve">
+    <value>NavigationInput</value>
+  </data>
+  <data name="Activities_Insert Q2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Alias" xml:space="preserve">
+    <value>ErrorHandler</value>
+  </data>
+  <data name="Activities_ErrorHandler_Conf_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q4_Alias" xml:space="preserve">
+    <value>ReturnNextPage Q4</value>
+  </data>
+  <data name="Activities_EndContainer3 Copy1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q4_Alias" xml:space="preserve">
+    <value>Update Q4</value>
+  </data>
+  <data name="Activities_EndContainer_Q9_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q9_Alias" xml:space="preserve">
+    <value>ReturnNextPage Q9</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q1 Next_Alias" xml:space="preserve">
+    <value>Q1 Next</value>
+  </data>
+  <data name="Activities_Insert Q3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Q4_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_End_Q5_B_Alias" xml:space="preserve">
+    <value>End_Q5_B</value>
+  </data>
+  <data name="Activities_Insert Q4_Alias" xml:space="preserve">
+    <value>Insert Q4</value>
+  </data>
+  <data name="Activities_EndContainer20_Alias" xml:space="preserve">
+    <value>EndContainer20</value>
+  </data>
+  <data name="Activities_EndContainer_Q6_Alias" xml:space="preserve">
+    <value>EndContainer_Q6</value>
+  </data>
+  <data name="Activities_StartContainer3 Copy1_Alias" xml:space="preserve">
+    <value>StartContainer3 Copy1</value>
+  </data>
+  <data name="Activities_Insert Q7_Alias" xml:space="preserve">
+    <value>Insert Q7</value>
+  </data>
+  <data name="Activities_EndContainerQ3_Alias" xml:space="preserve">
+    <value>EndContainerQ3</value>
+  </data>
+  <data name="Activities_F_Q2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q6_Alias" xml:space="preserve">
+    <value>ErrorHandler_Q6</value>
+  </data>
+  <data name="Activities_End_Q5_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Insert Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer_Q4_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage_Q5_Back_Alias" xml:space="preserve">
+    <value>ReturnNextPage_Q5_Back</value>
+  </data>
+  <data name="Activities_End_Q5_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Start_Q5_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q2_Alias" xml:space="preserve">
+    <value>Update Q2</value>
+  </data>
+  <data name="Activities_ReturnNextPage Q3_Alias" xml:space="preserve">
+    <value>ReturnNextPage Q3</value>
+  </data>
+  <data name="Activities_EndContainer3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q9_Alias" xml:space="preserve">
+    <value>F_Q9</value>
+  </data>
+  <data name="Activities_Routing_Alias" xml:space="preserve">
+    <value>Routing</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q2 Next_Alias" xml:space="preserve">
+    <value>Q2 Next</value>
+  </data>
+  <data name="Activities_StartContainerQ9_Alias" xml:space="preserve">
+    <value>StartContainerQ9</value>
+  </data>
+  <data name="Activities_ReturnNextPage Fullname_Alias" xml:space="preserve">
+    <value>ReturnNextPage Fullname</value>
+  </data>
+  <data name="Activities_F_Q4_Alias" xml:space="preserve">
+    <value>F_Q4</value>
+  </data>
+  <data name="Activities_StartContainer Conf_Alias" xml:space="preserve">
+    <value>StartContainer Conf</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q7_Alias" xml:space="preserve">
+    <value>ReturnPreviousPage_Q7</value>
+  </data>
+  <data name="Activities_ReturnNextPage_Q5_Alias" xml:space="preserve">
+    <value>ReturnNextPage_Q5</value>
+  </data>
+  <data name="Activities_StartContainer_Q6_B_Alias" xml:space="preserve">
+    <value>StartContainer_Q6_B</value>
+  </data>
+  <data name="Activities_EndContainer_Q8_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q7 Next_Alias" xml:space="preserve">
+    <value>Q7 Next</value>
+  </data>
+  <data name="Activities_EndContainer_Q6_B_Alias" xml:space="preserve">
+    <value>EndContainer_Q6_B</value>
+  </data>
+  <data name="Activities_F_Q6_Alias" xml:space="preserve">
+    <value>F_Q6</value>
+  </data>
+  <data name="Activities_WSout_ReturnError_Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer3_Alias" xml:space="preserve">
+    <value>StartContainer3</value>
+  </data>
+  <data name="Answer_Subject" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Start_Q5_Alias" xml:space="preserve">
+    <value>Start_Q5</value>
+  </data>
+  <data name="Activities_Starting Point_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer20_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question3Next_Alias" xml:space="preserve">
+    <value>Question3Next</value>
+  </data>
+  <data name="Activities_ErrorHandler_Q9_Alias" xml:space="preserve">
+    <value>ErrorHandler_Q9</value>
+  </data>
+  <data name="Activities_Question2Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainerQ6_Alias" xml:space="preserve">
+    <value>StartContainerQ6</value>
+  </data>
+  <data name="Activities_ReturnNextPage Conf_Alias" xml:space="preserve">
+    <value>ReturnNextPage Conf</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q4 Back_Alias" xml:space="preserve">
+    <value>Q4 Back</value>
+  </data>
+  <data name="Activities_Update Q3_Alias" xml:space="preserve">
+    <value>Update Q3</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q4 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q7 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q8 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer20_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Start_Alias" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Activities_Question6Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Forms_Description" xml:space="preserve">
+    <value>Forms</value>
+  </data>
+  <data name="Activities_StartContainer_Q9_B_Alias" xml:space="preserve">
+    <value>StartContainer_Q9_B</value>
+  </data>
+  <data name="Activities_F_Start_Alias" xml:space="preserve">
+    <value>F_Start</value>
+  </data>
+  <data name="Activities_Update Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q7 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Q9_B_Alias" xml:space="preserve">
+    <value>EndContainer_Q9_B</value>
+  </data>
+  <data name="Activities_EndContainer_Q6_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q5 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q8_Alias" xml:space="preserve">
+    <value>Update Q8</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q2 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q8 Copy1 Copy1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q6_Alias" xml:space="preserve">
+    <value>Update Q6</value>
+  </data>
+  <data name="Activities_EndContainer1_Alias" xml:space="preserve">
+    <value>EndContainer1</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q9 Back_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Insert Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question9Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndEvent1_Alias" xml:space="preserve">
+    <value>EndEvent1</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer_Q7_B_Alias" xml:space="preserve">
+    <value>StartContainer_Q7_B</value>
+  </data>
+  <data name="Activities_F_Q5_Alias" xml:space="preserve">
+    <value>F_Q5</value>
+  </data>
+  <data name="Activities_Question4Next_Alias" xml:space="preserve">
+    <value>Question4Next</value>
+  </data>
+  <data name="Activities_StartContainerQ4_Alias" xml:space="preserve">
+    <value>StartContainerQ4</value>
+  </data>
+  <data name="Activities_Update Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q9 Next_Alias" xml:space="preserve">
+    <value>Q9 Next</value>
+  </data>
+  <data name="Activities_DataInput_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q7_Alias" xml:space="preserve">
+    <value>WSout_ReturnError_Q7</value>
+  </data>
+  <data name="Activities_Question7Next_Alias" xml:space="preserve">
+    <value>Question7Next</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q6_Alias" xml:space="preserve">
+    <value>ReturnPreviousPage_Q6</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q4_Alias" xml:space="preserve">
+    <value>ReturnPreviousPage_Q4</value>
+  </data>
+  <data name="Activities_EndContainer_Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Q4_B_Alias" xml:space="preserve">
+    <value>EndContainer_Q4_B</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Start Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q8 Copy1_Alias" xml:space="preserve">
+    <value>WSout_ReturnError_Q8 Copy1</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q9 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Routing_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer_Q4_B_Alias" xml:space="preserve">
+    <value>StartContainer_Q4_B</value>
+  </data>
+  <data name="Activities_EndContainerQ3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer_Q8_B_Alias" xml:space="preserve">
+    <value>StartContainer_Q8_B</value>
+  </data>
+  <data name="Activities_EndContainer_Q7_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q1_Alias" xml:space="preserve">
+    <value>Update Q1</value>
+  </data>
+  <data name="Activities_EndContainer_Q9_Alias" xml:space="preserve">
+    <value>EndContainer_Q9</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q2 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question1Next_Alias" xml:space="preserve">
+    <value>Question1Next</value>
+  </data>
+  <data name="Activities_EndContainer3 Copy1_Alias" xml:space="preserve">
+    <value>EndContainer3 Copy1</value>
+  </data>
+  <data name="Activities_Insert Q8_Alias" xml:space="preserve">
+    <value>Insert Q8</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q1 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q5 Next_Alias" xml:space="preserve">
+    <value>Q5 Next</value>
+  </data>
+  <data name="Activities_EndContainer_Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Answer_Body" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q7 Back_Alias" xml:space="preserve">
+    <value>Q7 Back</value>
+  </data>
+  <data name="Activities_Question4Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Insert Q1_Alias" xml:space="preserve">
+    <value>Insert Q1</value>
+  </data>
+  <data name="Activities_NavigationInput_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_NavigationInput_Message_Subject" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Insert Q9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage start_Alias" xml:space="preserve">
+    <value>ReturnNextPage start</value>
+  </data>
+  <data name="Activities_StartContainerQ7_Alias" xml:space="preserve">
+    <value>StartContainerQ7</value>
+  </data>
+  <data name="Activities_F_Q7_Alias" xml:space="preserve">
+    <value>F_Q7</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage DOB_Alias" xml:space="preserve">
+    <value>ReturnPreviousPage DOB</value>
+  </data>
+  <data name="Activities_End_start_Alias" xml:space="preserve">
+    <value>End_start</value>
+  </data>
+  <data name="Activities_StartContainer3 Copy1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question8Next_Alias" xml:space="preserve">
+    <value>Question8Next</value>
+  </data>
+  <data name="Activities_Insert Q9_Alias" xml:space="preserve">
+    <value>Insert Q9</value>
+  </data>
+  <data name="Activities_WSout_ReturnError_Q4_Alias" xml:space="preserve">
+    <value>WSout_ReturnError_Q4</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q3_Alias" xml:space="preserve">
+    <value>ReturnPreviousPage_Q3</value>
+  </data>
+  <data name="Activities_Start_Start_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q2 Back_Alias" xml:space="preserve">
+    <value>Q2 Back</value>
+  </data>
+  <data name="Activities_WSout_error_Q2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer_Q7_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Starting Point_Alias" xml:space="preserve">
+    <value>Empty1</value>
+  </data>
+  <data name="Activities_StartContainer1_Alias" xml:space="preserve">
+    <value>StartContainer1</value>
+  </data>
+  <data name="Activities_StartContainerQ8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainerQ4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_error_Q2_Alias" xml:space="preserve">
+    <value>WSout_error_Q2</value>
+  </data>
+  <data name="Activities_EndContainer1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Alias" xml:space="preserve">
+    <value>WSout_ReturnError</value>
+  </data>
+  <data name="Activities_Start_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Qualifying w Back button</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q6 Back_Alias" xml:space="preserve">
+    <value>Q6 Back</value>
+  </data>
+  <data name="Activities_WSout_ReturnError_Q8 Copy1 Copy1_Alias" xml:space="preserve">
+    <value>WSout_ReturnError_Q8 Copy1 Copy1</value>
+  </data>
+  <data name="Activities_ReturnNextPage_Q5_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q3 Back_Alias" xml:space="preserve">
+    <value>Q3 Back</value>
+  </data>
+  <data name="Activities_StartContainerQ6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage start_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q8_Alias" xml:space="preserve">
+    <value>ReturnPreviousPage_Q8</value>
+  </data>
+  <data name="Activities_Insert Q2_Alias" xml:space="preserve">
+    <value>Insert Q2</value>
+  </data>
+  <data name="Activities_End_start_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q4 Next_Alias" xml:space="preserve">
+    <value>Q4 Next</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer_Q6_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question9Next_Alias" xml:space="preserve">
+    <value>Question9Next</value>
+  </data>
+  <data name="Activities_Loopback_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q6_Alias" xml:space="preserve">
+    <value>ReturnNextPage Q6</value>
+  </data>
+  <data name="Activities_Update Q3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q7_Alias" xml:space="preserve">
+    <value>Update Q7</value>
+  </data>
+  <data name="Activities_F_Q5_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_NavigationInput_Message_Body" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q9_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Forms_Alias" xml:space="preserve">
+    <value>Forms</value>
+  </data>
+  <data name="Activities_StartContainer2_Alias" xml:space="preserve">
+    <value>StartContainer2</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Confirmation Next_Alias" xml:space="preserve">
+    <value>Confirmation Next</value>
+  </data>
+  <data name="Activities_ReturnNextPage Fullname_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainerQ8_Alias" xml:space="preserve">
+    <value>StartContainerQ8</value>
+  </data>
+  <data name="Activities_F_Confirmation_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_StartContainer_Q9_B_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q2_Alias" xml:space="preserve">
+    <value>ReturnNextPage Q2</value>
+  </data>
+  <data name="Activities_ErrorHandler_Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q2_Alias" xml:space="preserve">
+    <value>F_Q2</value>
+  </data>
+  <data name="Activities_EndContainer2_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question3Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q3 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Start_Start_Alias" xml:space="preserve">
+    <value>Start_Start</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage_Q3_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q3 Next_Alias" xml:space="preserve">
+    <value>Q3 Next</value>
+  </data>
+  <data name="Activities_Insert Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q7_Alias" xml:space="preserve">
+    <value>ErrorHandler_Q7</value>
+  </data>
+  <data name="Activities_EndContainer_Q7_B_Alias" xml:space="preserve">
+    <value>EndContainer_Q7_B</value>
+  </data>
+  <data name="Activities_ErrorHandler_Q3_Alias" xml:space="preserve">
+    <value>ErrorHandler_Q3</value>
+  </data>
+  <data name="Activities_F_Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question7Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Diagrams_Item18_Elements_Q6 Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Q4_Alias" xml:space="preserve">
+    <value>EndContainer_Q4</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Confirmation Next_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Question6Next_Alias" xml:space="preserve">
+    <value>Question6Next</value>
+  </data>
+  <data name="Activities_F_Confirmation_Alias" xml:space="preserve">
+    <value>F_Confirmation</value>
+  </data>
+  <data name="Activities_ReturnPreviousPage DOB_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_Update Q8_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ErrorHandler_Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_Q1_Alias" xml:space="preserve">
+    <value>F_Q1</value>
+  </data>
+  <data name="Diagrams_Item18_Elements_Q6 Next_Alias" xml:space="preserve">
+    <value>Q6 Next</value>
+  </data>
+  <data name="Activities_F_Q7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_EndContainer_Conf_Alias" xml:space="preserve">
+    <value>EndContainer_Conf</value>
+  </data>
+  <data name="Activities_StartContainer1_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_ReturnNextPage Q6_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_F_End_Alias" xml:space="preserve">
+    <value>F_End</value>
+  </data>
+  <data name="Activities_StartContainerQ7_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Activities_WSout_ReturnError_Q4_Description" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btn_back" xml:space="preserve">
+    <value>Arrière</value>
+    <comment>0.0 - Generic buttons</comment>
+  </data>
+  <data name="btn_next" xml:space="preserve">
+    <value>Continuer</value>
+    <comment>0.0 - Generic buttons</comment>
+  </data>
+  <data name="Q1_birthDate" xml:space="preserve">
+    <value>Date de naissance</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q1_contact" xml:space="preserve">
+    <value>Données personnelles</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q1_financialinfo" xml:space="preserve">
+    <value>Informations financières</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q1_firstName" xml:space="preserve">
+    <value>Prénom</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q1_gender_mr" xml:space="preserve">
+    <value>M.</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q1_gender_ms" xml:space="preserve">
+    <value>Mme</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q1_lastName" xml:space="preserve">
+    <value>Nom de famille</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q1_title" xml:space="preserve">
+    <value>Veuillez remplir les champs ci-dessous</value>
+    <comment>Question 1 - fields</comment>
+  </data>
+  <data name="Q2_country" xml:space="preserve">
+    <value>Pays</value>
+    <comment>Question 2 - fields</comment>
+  </data>
+  <data name="Q2_postalCd" xml:space="preserve">
+    <value>Code postal – Commune</value>
+    <comment>Question 2 - fields</comment>
+  </data>
+  <data name="Q2_question" xml:space="preserve">
+    <value>Faisons connaissance, {0}. Où habitez-vous?</value>
+    <comment>Question 2 - fields</comment>
+  </data>
+  <data name="Q3_emailAdd" xml:space="preserve">
+    <value>Adresse e-mail</value>
+    <comment>Question 3</comment>
+  </data>
+  <data name="Q3_emailExamp" xml:space="preserve">
+    <value>example@mail.com</value>
+    <comment>Question 3</comment>
+  </data>
+  <data name="Q3_emailIsNotValid" xml:space="preserve">
+    <value>L'email n'est pas valide</value>
+    <comment>Question 3</comment>
+  </data>
+  <data name="Q3_question" xml:space="preserve">
+    <value>Quelle est votre adresse e-mail?</value>
+    <comment>Question 3 </comment>
+  </data>
+  <data name="Q4_phone" xml:space="preserve">
+    <value>Numéro de téléphone</value>
+    <comment>Question 4</comment>
+  </data>
+  <data name="Q4_question_man" xml:space="preserve">
+    <value>Ou préférez-vous être contacté par téléphone?</value>
+    <comment>Question 4</comment>
+  </data>
+  <data name="Q4_question_woman" xml:space="preserve">
+    <value>Ou préférez-vous être contactée par téléphone?</value>
+    <comment>Question 3</comment>
+  </data>
+  <data name="Q5_finQuestion" xml:space="preserve">
+    <value>Nous avons encore besoin de quelques informations financières de votre part.</value>
+    <comment>Question 5</comment>
+  </data>
+  <data name="Q5_thank" xml:space="preserve">
+    <value>Merci pour cette information.</value>
+    <comment>Question 5</comment>
+  </data>
+  <data name="Q6_growth" xml:space="preserve">
+    <value>Croissance</value>
+    <comment>Question 6</comment>
+  </data>
+  <data name="Q6_question" xml:space="preserve">
+    <value>Quels sont vos objectifs d’investissement?</value>
+    <comment>Question 6</comment>
+  </data>
+  <data name="Q6_realest" xml:space="preserve">
+    <value>Immobilier</value>
+    <comment>Question 6</comment>
+  </data>
+  <data name="Q6_recurr" xml:space="preserve">
+    <value>Revenus</value>
+    <comment>Question 6</comment>
+  </data>
+  <data name="Q6_retire" xml:space="preserve">
+    <value>Pension</value>
+    <comment>Question 6</comment>
+  </data>
+  <data name="Q6_sustain" xml:space="preserve">
+    <value>Sustainability</value>
+    <comment>Question 6</comment>
+  </data>
+  <data name="Q6_trans" xml:space="preserve">
+    <value>Transmission</value>
+    <comment>Question 6</comment>
+  </data>
+  <data name="Q7_credits" xml:space="preserve">
+    <value>Crédits</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_esttPlan" xml:space="preserve">
+    <value>Planification immobilière</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_assetsPlan" xml:space="preserve">
+    <value>Planification des actifs</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_assetsMgmt" xml:space="preserve">
+    <value>Gestion des actifs</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_regularisations" xml:space="preserve">
+    <value>Régularisations</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_InterFiscGuid" xml:space="preserve">
+    <value>Fiscalité internationale</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_phila" xml:space="preserve">
+    <value>Philanthropie</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_regu" xml:space="preserve">
+    <value>Régularisations</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_privtbnk" xml:space="preserve">
+    <value>Private banking</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_privtEquity" xml:space="preserve">
+    <value>Private equity</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_question" xml:space="preserve">
+    <value>Quels sont les services qui vous intéressent?</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q7_socRespInv" xml:space="preserve">
+    <value>Investissements responsables</value>
+    <comment>Question 7</comment>
+  </data>
+  <data name="Q8_detail" xml:space="preserve">
+    <value>Montant estimatif</value>
+    <comment>Question 8</comment>
+  </data>
+  <data name="Q8_question" xml:space="preserve">
+    <value>Quel montant souhaitez-vous investir?</value>
+    <comment>Question 8</comment>
+  </data>
+  <data name="Q9_question" xml:space="preserve">
+    <value>Quel est votre horizon d’investissement?</value>
+    <comment>Question 9</comment>
+  </data>
+  <data name="Qconf_disclaimer" xml:space="preserve">
+    <value>En cliquant sur « Envoyer », vous marquez votre accord pour qu’un de nos Private Bankers prenne contact avec vous.</value>
+    <comment>Question Confirmation</comment>
+  </data>
+  <data name="Qconf_question" xml:space="preserve">
+    <value>Notre équipe Private Banking vous contactera dans les 2 jours ouvrables.</value>
+    <comment>Question Confirmation</comment>
+  </data>
+  <data name="vals_required" xml:space="preserve">
+    <value>Requis</value>
+    <comment>0.1 - Generic validations</comment>
+  </data>
+   <data name="nav_F_Q1" xml:space="preserve">
+    <value>Infos personnelles</value>
+  </data>
+  <data name="nav_F_Q2" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="nav_F_Q3" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="nav_F_Q4" xml:space="preserve">
+    <value>Téléphone</value>
+  </data>
+  <data name="nav_F_Q5" xml:space="preserve">
+    <value>Merci</value>
+  </data>
+  <data name="nav_F_Q6" xml:space="preserve">
+    <value>Objectifs</value>
+  </data>
+  <data name="nav_F_Q7" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="nav_F_Q8" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="nav_F_Q9" xml:space="preserve">
+    <value>Période</value>
+  </data>
+  <data name="nav_F_Confirmation" xml:space="preserve">
+    <value>Récapitulatif</value>
+  </data>
+  <data name="nav_F_End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+
+  <data name="Overview_Title" xml:space="preserve">
+    <value>Récapitulatif de vos informations</value>
+  </data>
+  <data name="OName" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="OBDate" xml:space="preserve">
+    <value>Date de naissance</value>
+  </data>
+  <data name="OCity" xml:space="preserve">
+    <value>Ville</value>
+  </data>
+  <data name="OEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="OPhone" xml:space="preserve">
+    <value>Numéro de téléphone</value>
+  </data>
+  <data name="OGoals" xml:space="preserve">
+    <value>Objectifs</value>
+  </data>
+  <data name="OServices" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="OAmount" xml:space="preserve">
+    <value>Montant</value>
+  </data>
+  <data name="OPeriod" xml:space="preserve">
+    <value>Période d'investissement</value>
+  </data>
+  <data name="Q1_btn" xml:space="preserve">
+    <value>Vous dirigez/possédez une entreprise ? Cliquez ici</value>
+  </data>
+  <data name="Q9_choice1" xml:space="preserve">
+    <value>1 ans</value>
+  </data>
+  <data name="Q9_choice2" xml:space="preserve">
+    <value>3 ans</value>
+  </data>
+  <data name="Q9_choice3" xml:space="preserve">
+    <value>5 ans</value>
+  </data>
+  <data name="Q9_choice4" xml:space="preserve">
+    <value>7 ans</value>
+  </data>
+  <data name="Q9_choice5" xml:space="preserve">
+    <value>+7 ans</value>
+  </data>
+  <data name="F_End_Title" xml:space="preserve">
+    <value>Notre équipe Private Banking vous contactera dans les 2 jours ouvrables.</value>
+  </data>
+  <data name="F_End_Thanks" xml:space="preserve">
+    <value>Merci!</value>
+  </data>
+  <data name="Q4_contains_letters" xml:space="preserve">
+    <value>Votre numéro de téléphone ne peut pas contenir de lettres</value>
+    <comment>Question 4</comment>
+  </data>
+
+  <data name="at_least_one" xml:space="preserve">
+    <value>Veuillez sélectionner au moins un choix.</value>
+    <comment></comment>
+  </data>
+
+  <data name="Q8_higher_0" xml:space="preserve">
+    <value>Le montant doit être plus grand que 0.</value>
+    <comment></comment>
+  </data>
+  <data name="btn_submit" xml:space="preserve">
+    <value>Envoyer</value>
+    <comment></comment>
+  </data>
+  <data name="btn_Main_Site" xml:space="preserve">
+    <value>Retour au site principal</value>
+    <comment></comment>
+  </data>
+  <data name="majority" xml:space="preserve">
+    <value>Vous devez avoir plus de 18 ans.</value>
+    <comment></comment>
+  </data>
+  <data name="bDate_format" xml:space="preserve">
+    <value>Le format doit être JJ/MM/AAAA</value>
+    <comment></comment>
+  </data>
+  <data name="phone_minChars" xml:space="preserve">
+    <value>Le numéro de téléphone est trop court</value>
+    <comment></comment>
+  </data>
+  <data name="country_not_accepted" xml:space="preserve">
+    <value>Ce Pays n'est pas autorisé</value>
+    <comment></comment>
+  </data>
+  <data name="country_not_accepted_explained" xml:space="preserve">
+    <value>Désolé, nous ne sommes pas autorisés à offrir des services aux résidents de ce pays.</value>
+    <comment></comment>
+  </data>
+  <data name="processing" xml:space="preserve">
+    <value>En traitement...</value>
+    <comment></comment>
+  </data>
+  <data name="pressEnter" xml:space="preserve">
+    <value>Ou pressez "Enter"</value>
+    <comment></comment>
+  </data>
+</root>
