@@ -1,11 +1,11 @@
-<div class="qualifying vert-padding">
+<div class="bg-full vert-padding">
 
   <div class="container">
     <div class="card card-body">
-      <h1>Resx translations online editor</h1>
+      <h1>Resx translations online editor / CSV converter (Beta)</h1>
 
       <p-fileUpload name="myfile[]" url="./assets/upload.php" multiple="multiple"
-          accept=".resx" auto="true" [showUploadButton]="false" [showCancelButton]="false" (onSelect)="onSelect($event)">
+          accept=".resx,.csv" auto="true" [showUploadButton]="false" [showCancelButton]="false" (onSelect)="onSelect($event)" chooseLabel="Select files">
 
         <ng-template pTemplate="toolbar">
         </ng-template>
@@ -24,8 +24,10 @@
         <ng-template pTemplate="content">
           <div class="text-center">
             <p>
-              Please upload maximum 3 files by clicking on the button or by dragging them into this zone.
+              Please upload maximum 3 .resx files or 1 .csv file by clicking on the button or by dragging them into this zone.
             </p>
+            <p>This app supposes the files you upload are valid and correctly structured.</p>
+            <p>The translation comments that will be used are the ones in the first uploaded file.</p>
           </div>
           <div *ngIf="uploadedFiles.length">
             <p-messages [value]="msgs"></p-messages>
@@ -43,20 +45,26 @@
       <form name="form" role="form" [formGroup]="rForm" novalidate [hidden]="uploadedFiles.length < 1">
 
         <div class="item thead">
-          <div *ngFor="let tHead of tHeads; index as i" [ngClass]="[i===0 ? 'item-name' : 'item-value']" [innerHTML]="tHead"></div>
+          <div *ngFor="let tHead of tHeads; index as i" [ngClass]="{'item-name' : i===0, 'item-comment' : i===tHeads.length-1, 'item-value' : i !==0 && i!==tHeads.length-1}" [innerHTML]="tHead"></div>
           <div class="item-remove"></div>
         </div>
         <div formArrayName="translations">
           <div *ngFor="let item of this.rForm.controls.translations.controls; index as i" [formGroupName]="i" class="item-container">
-            <translation [tItem]="rForm.controls.translations.controls[i]" [tHeads]="tHeads" [uploadedFiles]="uploadedFiles" (notify)="removeTranslation($event)"></translation>
+            <translation [tItem]="rForm.controls.translations.controls[i]" [tHeads]="tHeads" [numValues]="numValues" (notify)="removeTranslation($event)"></translation>
           </div>
           <div class="item-add">
             <button type="button" class="btn btn-primary btn-square" (click)="addTranslation()"><span class="ion ion-android-add"></span></button>
           </div>
         </div>
         <br>
-        <button type="submit" name="submit" value="submit" (click)="save(rForm)" class="btn btn-primary btn-block">Save and download</button>
-
+        <div class="row">
+          <div class="col-6">
+            <button type="submit" name="submit" value="submit" (click)="saveResx(rForm)" class="btn btn-primary btn-block">Save and download .resx</button>
+          </div>
+          <div class="col-6">
+            <button type="button" (click)="saveCsv(rForm)" class="btn btn-primary btn-block">Save and download .csv</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>

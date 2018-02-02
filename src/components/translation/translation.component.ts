@@ -12,7 +12,7 @@ export class TranslationComponent implements OnInit {
 
   @Input() tItem: FormGroup;
   @Input() tHeads: any[] = [];
-  @Input() uploadedFiles: any[] = [];
+  @Input() numValues: any[] = [];
 
   private fileNum: any[] = [];
   private subject: Subject<boolean> = new Subject();
