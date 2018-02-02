@@ -6,8 +6,6 @@ import {FileUploadModule} from 'primeng/primeng';
 import { Overlay } from 'ngx-modialog';
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
 
-import { LoadXmlService } from '../providers/load-xml.service';
-import { Translation } from '../models/Translation';
 
 
 @Component({
@@ -19,14 +17,13 @@ import { Translation } from '../models/Translation';
 export class AppComponent implements OnInit {
   private tHeads: any[] = [];
   private rForm: FormGroup;
-  private data:any;
   private uploadedFiles: any[] = [];
   private msgs: any[];
   private allowed : boolean = true;
   private maxFiles = 3;
   private numValues : any[] = [];
 
-  constructor(private loadXML: LoadXmlService, private fb: FormBuilder, public modal: Modal){
+  constructor(private fb: FormBuilder, public modal: Modal){
 
   }
 
@@ -46,6 +43,7 @@ export class AppComponent implements OnInit {
   private onSelect(event) {
     //Use onSelect so there are less issues using ng serve; since everything is done client-side, there is no problem :)
     this.msgs = [];
+    // check if maximum file number is not exceeded
     if( event.files.length > this.maxFiles || this.uploadedFiles.length + event.files.length > this.maxFiles ) {
       this.allowed = false
     }
@@ -63,7 +61,7 @@ export class AppComponent implements OnInit {
             msgDetail = '';
 
         file.ext = extension;
-        // if files have different extensions, we stop!
+        // if uploaded files are multiple and have different extensions, we stop!
         if(this.uploadedFiles.length > 0) {
           for(var j = 0; j < this.uploadedFiles.length; j++) {
             let uploaded = this.uploadedFiles[this.uploadedFiles.length-1];
@@ -105,13 +103,16 @@ export class AppComponent implements OnInit {
   private readAndUpload(file) {
     let _app = this,
         reader = new FileReader();
-    _app.numValues = [];
+
+    // we store the uploaded file and its name for the table header
     _app.uploadedFiles.push(file);
     _app.tHeads[this.uploadedFiles.length] = file.name;
 
     // Closure to capture the file information.
     reader.onload = (function(theFile) {
       return function(e) {
+        // reset the number of languages per item
+        _app.numValues = [];
         // We store a value to determine the key of the values (value0, value1, value2...)
         let num = 0;
         for(var i = 0; i < _app.uploadedFiles.length; i++) {
@@ -121,12 +122,14 @@ export class AppComponent implements OnInit {
         }
         switch(theFile.ext) {
           case 'csv':
+            // We suppose the csv contains the data of all languages. If not, we'll check it later
             for(var i = 0; i < _app.maxFiles; i++) {
               _app.numValues.push(i)
             }
             _app.customizeCsvObject(e.target.result);
             break;
           case 'resx':
+            // if multiple uploaded files, we store the number of languages
             for(var i = 0; i < _app.uploadedFiles.length; i++) {
               _app.numValues.push(i)
             }
@@ -151,96 +154,70 @@ export class AppComponent implements OnInit {
       "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
       // Standard fields.
       "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
-      // Create an array to hold our data. Give the array
-      // a default empty first row.
+      // Create an array to hold our data. Give the array a default empty first row.
       var arrData = [[]];
-      // Create an array to hold our individual pattern
-      // matching groups.
+      // Create an array to hold our individual pattern matching groups.
       var arrMatches = null;
-      // Keep looping over the regular expression matches
-      // until we can no longer find a match.
-
-      var i = 0;
+      // Keep looping over the regular expression matches until we can no longer find a match.
       while (arrMatches = objPattern.exec(strData)) {
-
-        //we don't take the headers
-        //if(i > this.maxFiles + 1){
-          // Get the delimiter that was found.
-          var strMatchedDelimiter = arrMatches[1];
-          // Check to see if the given delimiter has a length
-          // (is not the start of string) and if it matches
-          // field delimiter. If id does not, then we know
-          // that this delimiter is a row delimiter.
-          if (strMatchedDelimiter.length && (strMatchedDelimiter != strDelimiter)) {
-              // Since we have reached a new row of data,
-              // add an empty row to our data array.
-              arrData.push([]);
-          }
-          // Now that we have our delimiter out of the way,
-          // let's check to see which kind of value we
-          // captured (quoted or unquoted).
-          if (arrMatches[2]) {
-              // We found a quoted value. When we capture
-              // this value, unescape any double quotes.
-              var strMatchedValue = arrMatches[2].replace(
-              new RegExp("\"\"", "g"), "\"");
-          } else {
-              // We found a non-quoted value.
-              var strMatchedValue = arrMatches[3];
-          }
-          // Now that we have our value string, let's add
-          // it to the data array.
-          arrData[arrData.length - 1].push(strMatchedValue);
+        // Get the delimiter that was found.
+        var strMatchedDelimiter = arrMatches[1];
+        // Check to see if the given delimiter has a length (is not the start of string) and if it matches field delimiter. If id does not, then we know that this delimiter is a row delimiter.
+        if (strMatchedDelimiter.length && (strMatchedDelimiter != strDelimiter)) {
+            // Since we have reached a new row of data, add an empty row to our data array.
+            arrData.push([]);
         }
-        i++;
-      //}
-      //if(arrData[arrData.length-1][0] == '')
-      // Return the parsed data.
-      return (arrData);
+        // Now that we have our delimiter out of the way, let's check to see which kind of value we captured (quoted or unquoted).
+        if (arrMatches[2]) {
+            // We found a quoted value. When we capture this value, unescape any double quotes.
+            var strMatchedValue = arrMatches[2].replace(
+            new RegExp("\"\"", "g"), "\"");
+        } else {
+            // We found a non-quoted value.
+            var strMatchedValue = arrMatches[3];
+        }
+        // Now that we have our value string, let's add it to the data array.
+        arrData[arrData.length - 1].push(strMatchedValue);
+      }
+    return (arrData);
   }
 
   private customizeCsvObject(csv) {
-      var array = this.csvToArray(csv),
-      keys = ['tName'];
-      this.tHeads = array[0];
-      for(var i = this.tHeads.length; i > 0; i--) {
-        //removing useless table headers
-        if(this.tHeads[i] === 'value' + (i-1)){
-          this.tHeads.splice(i, 1);
-          this.numValues.pop()
-        }
+    var array = this.csvToArray(csv),
+    keys = ['tName'];
+    this.tHeads = array[0];
+    for(var i = this.tHeads.length; i > 0; i--) {
+      //removing useless table headers + recounting number of languages
+      if(this.tHeads[i] === 'value' + (i-1)){
+        this.tHeads.splice(i, 1);
+        this.numValues.pop()
       }
-      for(var i = 0; i < this.maxFiles; i++){
-        keys.push('value' + i);
-      }
-      keys.push('comment')
-      var objArray = [];
-      for (var i = 1; i < array.length; i++) {
-        let obj = {};
+    }
+    for(var i = 0; i < this.maxFiles; i++){
+      keys.push('value' + i);
+    }
+    keys.push('comment');
+    var objArray = [];
+    for (var i = 1; i < array.length; i++) {
+      let obj = {};
 
-        for (var k = 0; k < keys.length; k++) {
-            var key = keys[k];
-            obj[key] = array[i][k];
-        }
-        objArray.push(obj)
+      for (var k = 0; k < keys.length; k++) {
+          var key = keys[k];
+          obj[key] = array[i][k];
       }
-      // var json = JSON.stringify(objArray);
-      // console.log(json)
-      // var str = json.replace(/},/g, "},\r\n");
-      // console.log(str)
-      this.createControls(objArray);
+      objArray.push(obj)
+    }
+    this.createControls(objArray);
   }
-
 
   private parseXML(fileText, num) {
     var parseString = require('xml2js').parseString,
       _app = this;
 
-      parseString(fileText, function (err, result) {
-        var resArray = result.root.data;
-        _app.createControls(resArray, num);
-
-      });
+    parseString(fileText, function (err, result) {
+      var resArray = result.root.data;
+      _app.createControls(resArray, num);
+    });
   }
 
   private createControls(resArray, num=null) {
@@ -249,7 +226,6 @@ export class AppComponent implements OnInit {
         _app = this;
     for(k in resArray) {
       let item = resArray[k], lab = 'value' + num;
-
 
       if(num === 0) {
         //if it's the 1st upload and the item doesn't exist, we create it
@@ -308,18 +284,40 @@ export class AppComponent implements OnInit {
     tArr.push(this.fb.group(item));
   }
 
-  // private save(form, ext) {
-  //   switch(ext) {
-  //     case 'resx':
-  //       this.saveResx(form);
-  //       break;
-  //     case 'csv':
-  //       this.savecsv(form);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
+  private addTranslation() {
+    let translation = {
+        tName: 'Choose_a_parameter_name',
+        comment: '',
+        isEdit: 'true'
+      },
+      tArr = this.rForm.controls.translations as FormArray;
+    for(var j = 0; j < this.maxFiles; j++) {
+      translation['value'+j] = '';
+    }
+    tArr.push(this.fb.group(translation));
+  }
+
+  private removeTranslation(t: FormGroup) {
+    const dialogRef = this.modal.confirm()
+        .showClose(true)
+        .title('Do you really want to delete the translation '+ t.value.tName +'?')
+        .body(`
+            <div class="vert-padding text-center">Click "ok" to delete the translation, or cancel if you changed your mind</div>`)
+        .open();
+
+    dialogRef.result
+        .then((result) => {
+            if(result) {
+              let tArr = this.rForm.controls.translations as FormArray;
+              const index = tArr.controls.indexOf(t);
+              if (index !== -1) {
+                  tArr.removeAt(index);
+              }
+            }
+          },
+          () => {}
+        );
+  }
 
   private saveResx(form) {
     let head = `<?xml version="1.0" encoding="utf-8"?>
@@ -500,40 +498,5 @@ export class AppComponent implements OnInit {
       a.click();
       document.body.removeChild(a);
     }
-  }
-
-  private addTranslation() {
-    let translation = {
-        tName: 'Choose_a_parameter_name',
-        comment: '',
-        isEdit: 'true'
-      },
-      tArr = this.rForm.controls.translations as FormArray;
-    for(var j = 0; j < this.maxFiles; j++) {
-      translation['value'+j] = '';
-    }
-    tArr.push(this.fb.group(translation));
-  }
-
-  private removeTranslation(t: FormGroup) {
-    const dialogRef = this.modal.confirm()
-        .showClose(true)
-        .title('Do you really want to delete the translation '+ t.value.tName +'?')
-        .body(`
-            <div class="vert-padding text-center">Click "ok" to delete the translation, or cancel if you changed your mind</div>`)
-        .open();
-
-    dialogRef.result
-        .then((result) => {
-            if(result) {
-              let tArr = this.rForm.controls.translations as FormArray;
-              const index = tArr.controls.indexOf(t);
-              if (index !== -1) {
-                  tArr.removeAt(index);
-              }
-            }
-          },
-          () => {}
-        );
   }
 }

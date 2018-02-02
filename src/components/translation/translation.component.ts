@@ -1,6 +1,5 @@
 import { Component, ComponentRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { Translation } from '../../models/Translation';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
