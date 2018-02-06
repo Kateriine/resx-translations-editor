@@ -9,18 +9,6 @@
 
         <ng-template pTemplate="toolbar">
         </ng-template>
-        <ng-template let-file pTemplate="file">
-          <div *ngIf="uploadedFiles.length">
-            <p-messages [value]="msgs"></p-messages>
-
-              <div class="ui-fileupload-row" *ngFor="let file of uploadedFiles; let i = index;">
-                <div>{{file.name}}</div>
-                <div><button type="button" class="btn btn-primary btn-square" icon="ion ion-android-close" pButton (click)="remove($event,i)"></button></div>
-              </div>
-
-
-          </div>
-        </ng-template>
         <ng-template pTemplate="content">
           <div class="text-center">
             <p>

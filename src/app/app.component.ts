@@ -408,8 +408,8 @@ export class AppComponent implements OnInit {
 
       //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
       let arrData = typeof jsonData != 'object' ? JSON.parse(jsonData) : jsonData;
-
-      let csv = '';
+    
+      let csv = '\uFEFF';
 
       //This condition will generate the Label/Header
       if (showLabel) {
