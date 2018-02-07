@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { forkJoin } from "rxjs/observable/forkJoin";
-import {FileUploadModule} from 'primeng/primeng';
-import { Overlay } from 'ngx-modialog';
-import { Modal } from 'ngx-modialog/plugins/bootstrap';
+// import { Observable } from 'rxjs/Observable';
+// import { forkJoin } from "rxjs/observable/forkJoin";
+import { FileUploadModule } from 'primeng/primeng';
+import { ConverterService } from '../providers/converter.service';
+import { AppFormComponent } from '../components/app-form/app-form.component';
 
 
 
@@ -15,29 +15,22 @@ import { Modal } from 'ngx-modialog/plugins/bootstrap';
 })
 
 export class AppComponent implements OnInit {
+
+  // uploadedfiles must be different of numTranslations (number of translations): in a csv, there can be multiple translations
   private tHeads: any[] = [];
-  private rForm: FormGroup;
   private uploadedFiles: any[] = [];
+  private numTranslations : any[] = [];
+  private fileData: object;
   private msgs: any[];
   private allowed : boolean = true;
   private maxFiles = 3;
-  private numValues : any[] = [];
+  @ViewChild(AppFormComponent) appForm: AppFormComponent;
 
-  constructor(private fb: FormBuilder, public modal: Modal){
-
+  constructor(public converter: ConverterService){
   }
 
   ngOnInit() {
-    this.rForm = this.fb.group({
-      translations: this.fb.array([]),
-    });
-    this.numValues = [];
-    this.tHeads = ['Parameter'];
-    for(var i = 0; i < this.maxFiles; i++) {
-      this.tHeads.push('');
-    }
-    this.tHeads.push('comment');
-
+    this.resetHeads();
   }
 
   private onSelect(event) {
@@ -105,378 +98,100 @@ export class AppComponent implements OnInit {
         reader = new FileReader();
 
     // we store the uploaded file and its name for the table header
+    // but we don't want to remove the comments
     _app.uploadedFiles.push(file);
-    _app.tHeads[this.uploadedFiles.length] = file.name;
+    _app.tHeads[_app.uploadedFiles.length-1] = file.name;
+
 
     // Closure to capture the file information.
     reader.onload = (function(theFile) {
       return function(e) {
+        let res = [];
         // reset the number of languages per item
-        _app.numValues = [];
+        _app.numTranslations = [];
         // We store a value to determine the key of the values (value0, value1, value2...)
-        let num = 0;
-        for(var i = 0; i < _app.uploadedFiles.length; i++) {
-          if(theFile.name === _app.uploadedFiles[i].name) {
-            num = i;
-          }
-        }
+
         switch(theFile.ext) {
           case 'csv':
             // We suppose the csv contains the data of all languages. If not, we'll check it later
             for(var i = 0; i < _app.maxFiles; i++) {
-              _app.numValues.push(i)
+              _app.numTranslations.push(i)
             }
-            _app.customizeCsvObject(e.target.result);
+            var array = _app.converter.csvToArray(e.target.result);
+            _app.tHeads = array[0];
+            _app.tHeads.pop();
+            _app.tHeads.shift();
+            for(var i = _app.tHeads.length; i > 0; i--) {
+              //removing useless table headers + recounting number of languages
+              if(_app.tHeads[i] === 'value' + (i-1)){
+                _app.tHeads[i] = '';
+                _app.numTranslations.pop()
+              }
+            }
+            res = _app.converter.customizeCsvObject(array, _app.maxFiles);
             break;
           case 'resx':
             // if multiple uploaded files, we store the number of languages
             for(var i = 0; i < _app.uploadedFiles.length; i++) {
-              _app.numValues.push(i)
+              _app.numTranslations.push(i)
             }
-            _app.parseXML(e.target.result, num);
+            res = _app.converter.parseXML(e.target.result);
             break;
           default:
           break;
 
         }
-        //_app.parseXML(e.target.result, num);
+        // for child component communication
+        _app.fileData = {res: res, theFile: theFile};
       };
     })(file);
     reader.readAsText(file);
   }
 
-  private csvToArray(strData, strDelimiter = ",") {
-      // Create a regular expression to parse the CSV values.
-      var objPattern = new RegExp((
-      // Delimiters.
-      "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
-      // Quoted fields.
-      "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
-      // Standard fields.
-      "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
-      // Create an array to hold our data. Give the array a default empty first row.
-      var arrData = [[]];
-      // Create an array to hold our individual pattern matching groups.
-      var arrMatches = null;
-      // Keep looping over the regular expression matches until we can no longer find a match.
-      while (arrMatches = objPattern.exec(strData)) {
-        // Get the delimiter that was found.
-        var strMatchedDelimiter = arrMatches[1];
-        // Check to see if the given delimiter has a length (is not the start of string) and if it matches field delimiter. If id does not, then we know that this delimiter is a row delimiter.
-        if (strMatchedDelimiter.length && (strMatchedDelimiter != strDelimiter)) {
-            // Since we have reached a new row of data, add an empty row to our data array.
-            arrData.push([]);
-        }
-        // Now that we have our delimiter out of the way, let's check to see which kind of value we captured (quoted or unquoted).
-        if (arrMatches[2]) {
-            // We found a quoted value. When we capture this value, unescape any double quotes.
-            var strMatchedValue = arrMatches[2].replace(
-            new RegExp("\"\"", "g"), "\"");
-        } else {
-            // We found a non-quoted value.
-            var strMatchedValue = arrMatches[3];
-        }
-        // Now that we have our value string, let's add it to the data array.
-        arrData[arrData.length - 1].push(strMatchedValue);
-      }
-    return (arrData);
-  }
-
-  private customizeCsvObject(csv) {
-    var array = this.csvToArray(csv),
-    keys = ['tName'];
-    this.tHeads = array[0];
-    for(var i = this.tHeads.length; i > 0; i--) {
-      //removing useless table headers + recounting number of languages
-      if(this.tHeads[i] === 'value' + (i-1)){
-        this.tHeads.splice(i, 1);
-        this.numValues.pop()
-      }
-    }
-    for(var i = 0; i < this.maxFiles; i++){
-      keys.push('value' + i);
-    }
-    keys.push('comment');
-    var objArray = [];
-    for (var i = 1; i < array.length; i++) {
-      let obj = {};
-
-      for (var k = 0; k < keys.length; k++) {
-          var key = keys[k];
-          obj[key] = array[i][k];
-      }
-      objArray.push(obj)
-    }
-    this.createControls(objArray);
-  }
-
-  private parseXML(fileText, num) {
-    var parseString = require('xml2js').parseString,
-      _app = this;
-
-    parseString(fileText, function (err, result) {
-      var resArray = result.root.data;
-      _app.createControls(resArray, num);
-    });
-  }
-
-  private createControls(resArray, num=null) {
-    let k,
-        tArr = this.rForm.controls.translations as FormArray,
-        _app = this;
-    for(k in resArray) {
-      let item = resArray[k], lab = 'value' + num;
-
-      if(num === 0) {
-        //if it's the 1st upload and the item doesn't exist, we create it
-        _app.createTranslationControl(tArr, item, lab);
-      }
-      else {
-        // if it's the 2nd translation or more, the table has already be initialized
-        // So we check if an instance already exists.
-        // If yes, we replace the values
-        if(num) {
-          _app.editTranslationControl(tArr, item, lab);
-        }
-        else {
-          // If there is no num, then the uploaded file is csv
-          _app.createCsvTranslationControl(tArr, item);
-        }
-      }
+  private resetHeads(){
+    this.tHeads = [];
+    for(var i = 0; i < this.maxFiles; i++) {
+      this.tHeads.push('');
     }
   }
 
   private removeFile(event: Event, index: number) {
-    this.tHeads.splice(index+1, 1);
-    this.numValues.splice(index+1, 1);
+    this.numTranslations.splice(index, 1);
     this.uploadedFiles.splice(index, 1);
-  }
-
-  private createTranslationControl(tArr, item, lab){
-    let _app = this,
-        translation = {
-          tName : item.$.name
-        }
-
-    for(var j = 0; j < _app.maxFiles; j++) {
-      translation['value'+j] = '';
+    if(this.uploadedFiles.length ===0){
+      this.appForm.resetControls()
+      // to be sure, we reset the heads
+      this.resetHeads();
     }
-
-    translation[lab] = item.value[0]
-    if(item.comment)
-      translation['comment'] = item.comment[0]
-
-    tArr.push(_app.fb.group(translation));
-  }
-
-  private editTranslationControl(tArr, item, lab){
-    let _app = this;
-    for(var j = 0; j < tArr.controls.length; j++) {
-      if(tArr.at(j).value.tName === item.$.name) {
-        let translation = tArr.at(j).value;
-        translation[lab] = item.value;
-        tArr.setControl(j, _app.fb.group(translation));
-      }
+    else {
+      this.tHeads.splice(index, 1);
+      this.tHeads[this.tHeads.length] = '';
     }
   }
 
-  private createCsvTranslationControl(tArr, item){
-    tArr.push(this.fb.group(item));
-  }
 
-  private addTranslation() {
-    let translation = {
-        tName: 'Choose_a_parameter_name',
-        comment: '',
-        isEdit: 'true'
-      },
-      tArr = this.rForm.controls.translations as FormArray;
-    for(var j = 0; j < this.maxFiles; j++) {
-      translation['value'+j] = '';
+  private onSave(message):void {
+    if(message.type === 'csv') {
+      this.saveCsv(message.form);
     }
-    tArr.push(this.fb.group(translation));
+    else {
+      this.saveResx(message.form);
+    }
   }
 
-  private removeTranslation(t: FormGroup) {
-    const dialogRef = this.modal.confirm()
-        .showClose(true)
-        .title('Do you really want to delete the translation '+ t.value.tName +'?')
-        .body(`
-            <div class="vert-padding text-center">Click "ok" to delete the translation, or cancel if you changed your mind</div>`)
-        .open();
-
-    dialogRef.result
-        .then((result) => {
-            if(result) {
-              let tArr = this.rForm.controls.translations as FormArray;
-              const index = tArr.controls.indexOf(t);
-              if (index !== -1) {
-                  tArr.removeAt(index);
-              }
-            }
-          },
-          () => {}
-        );
-  }
 
   private saveResx(form) {
-    let head = `<?xml version="1.0" encoding="utf-8"?>
-  <root>
-    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-      <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-      <xsd:element name="root" msdata:IsDataSet="true">
-        <xsd:complexType>
-          <xsd:choice maxOccurs="unbounded">
-            <xsd:element name="metadata">
-              <xsd:complexType>
-                <xsd:sequence>
-                  <xsd:element name="value" type="xsd:string" minOccurs="0" />
-                </xsd:sequence>
-                <xsd:attribute name="name" use="required" type="xsd:string" />
-                <xsd:attribute name="type" type="xsd:string" />
-                <xsd:attribute name="mimetype" type="xsd:string" />
-                <xsd:attribute ref="xml:space" />
-              </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="assembly">
-              <xsd:complexType>
-                <xsd:attribute name="alias" type="xsd:string" />
-                <xsd:attribute name="name" type="xsd:string" />
-              </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="data">
-              <xsd:complexType>
-                <xsd:sequence>
-                  <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                  <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-                </xsd:sequence>
-                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-                <xsd:attribute ref="xml:space" />
-              </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="resheader">
-              <xsd:complexType>
-                <xsd:sequence>
-                  <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                </xsd:sequence>
-                <xsd:attribute name="name" type="xsd:string" use="required" />
-              </xsd:complexType>
-            </xsd:element>
-          </xsd:choice>
-        </xsd:complexType>
-      </xsd:element>
-    </xsd:schema>
-    <resheader name="resmimetype">
-      <value>text/microsoft-resx</value>
-    </resheader>
-    <resheader name="version">
-      <value>2.0</value>
-    </resheader>
-    <resheader name="reader">
-      <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>
-    <resheader name="writer">
-      <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-    </resheader>`;
-    for(var i = 0; i < this.uploadedFiles.length; i++) {
-      let tFileEdited = head;
-      form.value.translations.forEach(x => {
-
-      tFileEdited += `
-      <data name="` + x.tName + `" xml:space="preserve">
-        <value>` + x['value' + i] + `</value>`;
-      if(x.comment){
-      tFileEdited += `
-        <comment>`+ x.comment + `</comment>`;
-      }
-      tFileEdited += `
-      </data>`;
-      });
-      tFileEdited += `
-  </root>`;
-      this.download(this.tHeads[i+1], tFileEdited);
+    for(var i = 0; i < this.numTranslations.length; i++) {
+      let tFileEdited = this.converter.createResx(form, i)
+      this.download(this.tHeads[i], tFileEdited);
     }
   }
 
   private saveCsv(form) {
-    this.jsonToCsvConvertor(form.value.translations, true);
-  }
-
-  private jsonToCsvConvertor(jsonData, showLabel) {
-
-      //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
-      let arrData = typeof jsonData != 'object' ? JSON.parse(jsonData) : jsonData;
-    
-      let csv = '\uFEFF';
-
-      //This condition will generate the Label/Header
-      if (showLabel) {
-          var row = "";
-          //This loop will extract the label from 1st index of on array
-          var i = 0
-          for (var index in arrData[0]) {
-            let head = index;
-            //Now convert each value to string and comma-seprated
-            if(this.tHeads[i]){
-              head =  this.tHeads[i];
-            }
-            if(head.indexOf('"')>-1 || head.indexOf(',')>-1) {
-              //escaping quotes and semi-colon
-              head = head.replace(/"/g, '""');
-              head = '"' + head + '"';
-            }
-            row += head + ',';
-            i++;
-          }
-
-          row = row.slice(0, -1);
-
-          //append Label row with line break
-          csv += row + '\r\n';
-      }
-
-      //1st loop is to extract each row
-      for (var i = 0; i < arrData.length; i++) {
-        var row = "", j = 0;
-        //2nd loop will extract each column and convert it in string comma-seprated
-
-        for (var index in arrData[i]) {
-          let val = arrData[i][index];
-          if(val.indexOf('"')>-1 || val.indexOf(',')>-1) {
-            //escaping quotes and semi-colon
-            val = val.replace(/"/g, '""');
-            val = '"' + val + '"';
-          }
-          row += val;
-          // We set the separato except after the last parameter
-          if(j !== Object.keys(arrData[i]).length-1) {
-            row += ',';
-          }
-          j++;
-        }
-        row.slice(0, row.length - 1);
-        csv += row;
-        //add a line break after each row except the last one
-        if(i !== arrData.length-1) {
-          csv += '\r\n';
-        }
-      }
-
-      if (csv == '') {
-        alert("Invalid data");
-        return;
-      }
-
-      //Generate a file name
-      var fileName = 'translations.csv' ;
-      //this will remove the blank-spaces from the title and replace it with an underscore
-    //  fileName += reportTitle.replace(/ /g,"_");
-
-      //Initialize file format you want csv or xls
-
-      this.download(fileName, csv, 'csv')
+    let csv = this.converter.jsonToCsvConvertor(form.value.translations, this.tHeads),
+        fileName = 'translations.csv' ;
+    //Initialize file format you want csv or xls
+    this.download(fileName, csv, 'csv')
   }
 
   private download(filename, text, type='plain') {

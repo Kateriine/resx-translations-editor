@@ -8,11 +8,15 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 
 import { AppComponent } from './app.component';
 import { TranslationComponent } from '../components/translation/translation.component';
+import { AppFormComponent } from '../components/app-form/app-form.component';
+
+import { ConverterService } from '../providers/converter.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TranslationComponent
+    TranslationComponent,
+    AppFormComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,7 @@ import { TranslationComponent } from '../components/translation/translation.comp
     ModalModule.forRoot(),
     BootstrapModalModule
   ],
-  providers: [],
+  providers: [ConverterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

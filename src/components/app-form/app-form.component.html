@@ -1,3 +1,19 @@
-<p>
-  app-form works!
-</p>
+<form name="form" role="form" [formGroup]="rForm" novalidate [hidden]="uploadedFiles.length < 1">
+  <div formArrayName="translations">
+    <div *ngFor="let item of this.rForm.controls.translations.controls; index as i" [formGroupName]="i" class="item-container">
+      <translation [tItem]="rForm.controls.translations.controls[i]" [numTranslations]="numTranslations" (notify)="removeTranslation($event)"></translation>
+    </div>
+    <div class="item-add">
+      <button type="button" class="btn btn-primary btn-square" (click)="addTranslation()"><span class="ion ion-android-add"></span></button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-6">
+      <button type="submit" name="submit" value="submit" (click)="saveResx(rForm)" class="btn btn-primary btn-block">Save and download .resx</button>
+    </div>
+    <div class="col-6">
+      <button type="button" (click)="saveCsv(rForm)" class="btn btn-primary btn-block">Save and download .csv</button>
+    </div>
+  </div>
+</form>

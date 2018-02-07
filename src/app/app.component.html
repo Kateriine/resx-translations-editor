@@ -19,41 +19,21 @@
           </div>
           <div *ngIf="uploadedFiles.length">
             <p-messages [value]="msgs"></p-messages>
-
-              <div class="ui-fileupload-row" *ngFor="let file of uploadedFiles; let i = index;">
-                <div>{{file.name}}</div>
-                <div><button type="button" class="btn btn-primary btn-square" icon="ion ion-android-close" pButton (click)="removeFile($event,i)"></button></div>
-              </div>
-
-
+            <div class="ui-fileupload-row" *ngFor="let file of uploadedFiles; let i = index;">
+              <div>{{file.name}}</div>
+              <div><button type="button" class="btn btn-primary btn-square" icon="ion ion-android-close" pButton (click)="removeFile($event,i)"></button></div>
+            </div>
           </div>
         </ng-template>
       </p-fileUpload>
 
-      <form name="form" role="form" [formGroup]="rForm" novalidate [hidden]="uploadedFiles.length < 1">
-
-        <div class="item thead">
-          <div *ngFor="let tHead of tHeads; index as i" [ngClass]="{'item-name' : i===0, 'item-comment' : i===tHeads.length-1, 'item-value' : i !==0 && i!==tHeads.length-1}" [innerHTML]="tHead"></div>
-          <div class="item-remove"></div>
-        </div>
-        <div formArrayName="translations">
-          <div *ngFor="let item of this.rForm.controls.translations.controls; index as i" [formGroupName]="i" class="item-container">
-            <translation [tItem]="rForm.controls.translations.controls[i]" [tHeads]="tHeads" [numValues]="numValues" (notify)="removeTranslation($event)"></translation>
-          </div>
-          <div class="item-add">
-            <button type="button" class="btn btn-primary btn-square" (click)="addTranslation()"><span class="ion ion-android-add"></span></button>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-6">
-            <button type="submit" name="submit" value="submit" (click)="saveResx(rForm)" class="btn btn-primary btn-block">Save and download .resx</button>
-          </div>
-          <div class="col-6">
-            <button type="button" (click)="saveCsv(rForm)" class="btn btn-primary btn-block">Save and download .csv</button>
-          </div>
-        </div>
-      </form>
+      <div class="item thead" *ngIf="uploadedFiles.length > 0">
+        <div class="item-name">Parameter</div>
+        <div *ngFor="let tHead of tHeads; index as i" class="item-value" [innerHTML]="tHead"></div>
+        <div class="item-comment">Comment</div>
+        <div class="item-remove"></div>
+      </div>
+      <app-form [maxFiles]="maxFiles" [fileData]="fileData" [uploadedFiles]="uploadedFiles" [numTranslations]="numTranslations" (save)=onSave($event)></app-form>
     </div>
   </div>
 </div>

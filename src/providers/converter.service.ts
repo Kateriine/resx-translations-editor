@@ -3,53 +3,10 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ConverterService {
-  private tHeads: any[] = [];
-  private numValues : any[] = [];
-  private maxFiles;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-    this.numValues = [];
-    this.tHeads = ['Parameter'];
-    for(var i = 0; i < this.maxFiles; i++) {
-      this.tHeads.push('');
-    }
-    this.tHeads.push('comment');
-  }
-
-  public get_tHeads() {
-    return this.tHeads;
-  }
-  public get_numValues() {
-    return this.numValues;
-  }
-
-  public set_tHeads(th) {
-    this.tHeads = th;
-  }
-
-  public set_Thead(index, value) {
-    this.tHeads[index] = value;
-  }
-
-  public set_numValues(nv) {
-    this.numValues = nv;
-  }
-
-  public set_numValue(num) {
-    this.numValues[num] = num;
-  }
-
-  public set_maxFiles(mF) {
-    this.maxFiles = mF;
-  }
-
-  public remove_numValue(index) {
-    this.numValues.splice(index+1, 1);
-  }
-
-  private csvToArray(strData, strDelimiter = ",") {
+  public csvToArray(strData, strDelimiter = ",") {
       // Create a regular expression to parse the CSV values.
       var objPattern = new RegExp((
       // Delimiters.
@@ -86,18 +43,10 @@ export class ConverterService {
     return (arrData);
   }
 
-  public customizeCsvObject(csv) {
-    var array = this.csvToArray(csv),
-    keys = ['tName'];
-    this.tHeads = array[0];
-    for(var i = this.tHeads.length; i > 0; i--) {
-      //removing useless table headers + recounting number of languages
-      if(this.tHeads[i] === 'value' + (i-1)){
-        this.tHeads.splice(i, 1);
-        this.numValues.pop()
-      }
-    }
-    for(var i = 0; i < this.maxFiles; i++){
+  public customizeCsvObject(array, maxFiles) {
+    let keys = ['tName'];
+
+    for(var i = 0; i < maxFiles; i++){
       keys.push('value' + i);
     }
     keys.push('comment');
@@ -111,8 +60,164 @@ export class ConverterService {
       }
       objArray.push(obj)
     }
-    console.log(objArray)
     return objArray;
   }
 
+  public parseXML(fileText) {
+    var parseString = require('xml2js').parseString,
+      res = [],
+      _app = this;
+    parseString(fileText, function (err, result) {
+      res = result.root.data;
+    });
+    return res;
+  }
+
+  public createResx(form, i) {
+    let head = `<?xml version="1.0" encoding="utf-8"?>
+  <root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+      <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+      <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+          <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+              <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                  <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+      <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+      <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+      <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+      <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>`;
+      let tFileEdited = head;
+      form.value.translations.forEach(x => {
+
+      tFileEdited += `
+      <data name="` + x.tName + `" xml:space="preserve">
+        <value>` + x['value' + i] + `</value>`;
+      if(x.comment){
+      tFileEdited += `
+        <comment>`+ x.comment + `</comment>`;
+      }
+      tFileEdited += `
+      </data>`;
+      });
+      tFileEdited += `
+  </root>`;
+
+    return tFileEdited;
+  }
+
+  public jsonToCsvConvertor(jsonData, tHeads, showLabel=true) {
+      //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+      let arrData = typeof jsonData != 'object' ? JSON.parse(jsonData) : jsonData;
+      let csv = '\uFEFF';
+
+      //This condition will generate the Label/Header
+      if (showLabel) {
+          //This loop will extract the label from 1st index of on array
+          var i = 0, row = '';
+          for (var index in arrData[0]) {
+            let head = '';
+            //Now convert each value to string and comma-seprated
+            if(i === 0) {
+              head = 'Parameter';
+            }
+            else {
+              head = index;
+            }
+            if(tHeads[i-1]){
+              head =  tHeads[i-1];
+            }
+            if(head.indexOf('"')>-1 || head.indexOf(',')>-1) {
+              //escaping quotes and semi-colon
+              head = head.replace(/"/g, '""');
+              head = '"' + head + '"';
+            }
+            row += head + ',';
+            i++;
+          }
+          row = row.slice(0, -1);
+          //append Label row with line break
+          csv += row + '\r\n';
+      }
+
+      //1st loop is to extract each row
+      for (var i = 0; i < arrData.length; i++) {
+        var row = "", j = 0;
+        //2nd loop will extract each column and convert it in string comma-seprated
+
+        for (var index in arrData[i]) {
+          let val = arrData[i][index];
+          if(val.indexOf('"')>-1 || val.indexOf(',')>-1) {
+            //escaping quotes and semi-colon
+            val = val.replace(/"/g, '""');
+            val = '"' + val + '"';
+          }
+          row += val;
+          // We set the separato except after the last parameter
+          if(j !== Object.keys(arrData[i]).length-1) {
+            row += ',';
+          }
+          j++;
+        }
+        row.slice(0, row.length - 1);
+        csv += row;
+        //add a line break after each row except the last one
+        if(i !== arrData.length-1) {
+          csv += '\r\n';
+        }
+      }
+
+      if (csv == '') {
+        alert("Invalid data");
+        return;
+      }
+      return csv;
+  }
 }

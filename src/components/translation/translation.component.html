@@ -1,9 +1,8 @@
 <div  class="item" [formGroup]="tItem">
-  <div class="item-name" *ngIf="tHeads[0] && tItem">
+  <div class="item-name">
     <input type="text" [readonly]="!tItem.get('isEdit')" class="form-control-bordered rcbInput" id="itemName"  formControlName="tName">
   </div>
-
-  <div class="item-value" *ngFor="let num of numValues">
+  <div class="item-value" *ngFor="let num of numTranslations">
     <input type="text" class="form-control-bordered rcbInput" [id]="'itemValue' + num"  formControlName="{{'value' + num }}" *ngIf="tItem && tItem.get('value' + num)">
   </div>
   <div class="item-comment">

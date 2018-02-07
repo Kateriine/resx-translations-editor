@@ -1,30 +1,20 @@
-import { Component, ComponentRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'translation',
   templateUrl: './translation.component.html'
 })
-export class TranslationComponent implements OnInit {
+export class TranslationComponent {
 
   @Input() tItem: FormGroup;
-  @Input() tHeads: any[] = [];
-  @Input() numValues: any[] = [];
+  @Input() numTranslations: any[] = [];
 
-  private fileNum: any[] = [];
-  private subject: Subject<boolean> = new Subject();
   @Output() notify: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
   removeItem() {
     this.notify.emit(this.tItem);
   }
-
-
 }
