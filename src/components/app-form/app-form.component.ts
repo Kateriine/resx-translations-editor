@@ -117,6 +117,8 @@ export class AppFormComponent implements OnInit {
     translation[lab] = item.value[0]
     if(item.comment)
       translation['comment'] = item.comment[0]
+    else
+      translation['comment'] = '';
 
     tArr.push(this.fb.group(translation));
   }
