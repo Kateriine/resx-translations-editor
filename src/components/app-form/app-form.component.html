@@ -1,6 +1,6 @@
 <form name="form" role="form" [formGroup]="rForm" novalidate [hidden]="uploadedFiles.length < 1">
   <div formArrayName="translations">
-    <div *ngFor="let item of this.rForm.controls.translations.controls; index as i" [formGroupName]="i" class="item-container">
+    <div *ngFor="let item of this.rForm.controls.translations['controls']; index as i" [formGroupName]="i" class="item-container">
       <translation [tItem]="rForm.controls.translations.controls[i]" [numTranslations]="numTranslations" (notify)="removeTranslation($event)"></translation>
     </div>
     <div class="item-add">

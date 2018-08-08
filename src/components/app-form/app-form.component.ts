@@ -22,7 +22,7 @@ export class AppFormComponent implements OnInit {
     }
   }
 
-  private rForm: FormGroup;
+  rForm: FormGroup;
 
   constructor(private fb: FormBuilder, public modal: Modal) { }
 
@@ -90,9 +90,10 @@ export class AppFormComponent implements OnInit {
           },
           () => {}
         );
+
   }
 
-  private addTranslation() {
+  addTranslation() {
     let translation = {
         tName: 'Choose_a_parameter_name',
         comment: '',
@@ -134,11 +135,11 @@ export class AppFormComponent implements OnInit {
     tArr.push(this.fb.group(item));
   }
 
-  private saveResx(form) {
+  saveResx(form) {
     this.save.emit({form: form, type: 'resx'})
   }
 
-  private saveCsv(form) {
+  saveCsv(form) {
     this.save.emit({form: form, type: 'csv'})
   }
 }

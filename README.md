@@ -9,7 +9,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 [Demo here](https://catherinearnould.com/autres/resx/)
 
 Warning:
+* Angular CLI 1.6.5
 * Requires typescript 2.5.2 due to [ngx-modialog issue](https://github.com/shlomiassaf/ngx-modialog/issues/400)
+* Requires ngx-modialog 5.0.0
 * Small console error with `ng serve` on file upload due to the [primeng fileUploadModule](https://www.primefaces.org/primeng/#/fileupload), but doesn't impact anything (doesn't find a file in /assets, can't figure out why)
 
 
@@ -23,7 +25,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` or `npm run-script build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Running unit tests
 

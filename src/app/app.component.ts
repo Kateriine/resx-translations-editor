@@ -18,12 +18,12 @@ export class AppComponent implements OnInit {
 
   // uploadedfiles must be different of numTranslations (number of translations): in a csv, there can be multiple translations
   private tHeads: any[] = [];
-  private uploadedFiles: any[] = [];
-  private numTranslations : any[] = [];
-  private fileData: object;
+  uploadedFiles: any[] = [];
+  numTranslations : any[] = [];
+  fileData: object;
   private msgs: any[];
   private allowed : boolean = true;
-  private maxFiles = 3;
+  maxFiles = 3;
   @ViewChild(AppFormComponent) appForm: AppFormComponent;
 
   constructor(public converter: ConverterService){
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
     this.resetHeads();
   }
 
-  private onSelect(event) {
+  onSelect(event) {
     //Use onSelect so there are less issues using ng serve; since everything is done client-side, there is no problem :)
     this.msgs = [];
     // check if maximum file number is not exceeded
@@ -101,8 +101,6 @@ export class AppComponent implements OnInit {
     // but we don't want to remove the comments
     _app.uploadedFiles.push(file);
     _app.tHeads[_app.uploadedFiles.length-1] = file.name;
-
-
     // Closure to capture the file information.
     reader.onload = (function(theFile) {
       return function(e) {
@@ -170,7 +168,7 @@ export class AppComponent implements OnInit {
   }
 
 
-  private onSave(message):void {
+  onSave(message):void {
     if(message.type === 'csv') {
       this.saveCsv(message.form);
     }
@@ -180,14 +178,14 @@ export class AppComponent implements OnInit {
   }
 
 
-  private saveResx(form) {
+  saveResx(form) {
     for(var i = 0; i < this.numTranslations.length; i++) {
       let tFileEdited = this.converter.createResx(form, i)
       this.download(this.tHeads[i], tFileEdited);
     }
   }
 
-  private saveCsv(form) {
+  saveCsv(form) {
     let csv = this.converter.jsonToCsvConvertor(form.value.translations, this.tHeads),
         fileName = 'translations.csv' ;
     //Initialize file format you want csv or xls

@@ -32,6 +32,8 @@
   box-sizing: border-box;
 }
 
+*:focus {outline: medium none}
+
 button, html [type="button"], [type="reset"], [type="submit"] {
   -webkit-appearance: none;
   border: none;
