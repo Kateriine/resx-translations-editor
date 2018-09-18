@@ -198,8 +198,15 @@ export class ConverterService {
   </resheader>`;
       let tFileEdited = head;
       form.value.translations.forEach(x => {
+        let val = '';
+        // if contains html, we set a cdata
+        if (/<[a-z][\s\S]*>/i.test(x['value' + i])){
+          val = `<![CDATA[` + x['value' + i] + `]]>`;
+        }
+        else {
         // convert html special chars
-        let val = x['value' + i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+        val = x['value' + i].replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+        }
 
         tFileEdited += `
   <data name="` + x.tName + `" xml:space="preserve">

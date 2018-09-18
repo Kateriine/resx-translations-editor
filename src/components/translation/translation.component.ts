@@ -6,13 +6,15 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './translation.component.html'
 })
 export class TranslationComponent {
-
+ 
   @Input() tItem: FormGroup;
   @Input() numTranslations: any[] = [];
 
   @Output() notify: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
-  constructor() { }
+  constructor() {
+    
+  }
 
   removeItem() {
     this.notify.emit(this.tItem);

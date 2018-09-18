@@ -44,6 +44,7 @@ export class AppFormComponent implements OnInit {
         tArr = this.rForm.controls.translations as FormArray;
     for(k in resArray) {
       let item = resArray[k], lab = 'value' + num;
+      
       if(theFile.ext === 'csv') {
         this.createCsvTranslationControl(tArr, item);
       }
@@ -97,6 +98,7 @@ export class AppFormComponent implements OnInit {
     let translation = {
         tName: 'Choose_a_parameter_name',
         comment: '',
+        isTextarea: 'false',
         isEdit: 'true'
       },
       tArr = this.rForm.controls.translations as FormArray;
@@ -114,11 +116,16 @@ export class AppFormComponent implements OnInit {
     for(var j = 0; j < this.maxFiles; j++) {
       translation['value'+j] = '';
     }
-    translation[lab] = item.value[0]
+    
+    translation[lab] = item.value[0];
+    if(item.value[0].length > 50){
+      translation['isTextarea'] = 'true';
+    }
     if(item.comment)
       translation['comment'] = item.comment[0]
     else
       translation['comment'] = '';
+
 
     tArr.push(this.fb.group(translation));
   }
